@@ -27,6 +27,7 @@ public class UserController {
         return new ResponseEntity<>(userResponseDto, HttpStatus.OK);
     }
 
+    @GetMapping("/users/{userId}")
     public ResponseEntity<UserResponseDto> getUser(HttpServletRequest request, @PathVariable String userId) {
         ImmutablePair<String, String> credentials = Utils.getAuthorizationToken(request);
         UserResponseDto userResponseDto = userService.getUser(userId, credentials);
